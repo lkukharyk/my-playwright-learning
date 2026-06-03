@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test'; //analog of include in C++
 
 // POSITIVE test — checks that something IS as expected
 test('page has the correct title', async ({ page }) => {
