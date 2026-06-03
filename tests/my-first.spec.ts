@@ -5,7 +5,7 @@ test('page has the correct title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
   await expect(page).toHaveTitle(/Playwright/);
 });
-
+//small edit to test git commit and push
 // NEGATIVE test — checks that something is NOT present.
 // In QA, this is just as important as positive checks.
 test('page does not contain error text', async ({ page }) => {
