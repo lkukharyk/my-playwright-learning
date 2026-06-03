@@ -27,7 +27,7 @@ printName(userName);
 
 test ('all the "Available for" links are valid', 
     async ({page}) => {
-        await page.goto('https://playwright.dev');
+        await page.goto('https://playwright.dev/');
         await expect(page.getByRole('link', { name: 'TypeScript' }))
   .toHaveAttribute('href', 'https://playwright.dev/docs/intro');
         await expect(page.getByRole('banner').getByRole('link', { name: 'Python' }))
@@ -36,11 +36,11 @@ test ('all the "Available for" links are valid',
   .toHaveAttribute('href', 'https://playwright.dev/dotnet/docs/intro');
         await expect(page.getByRole('banner').getByRole('link', { name: 'Java' }))
   .toHaveAttribute('href', 'https://playwright.dev/java/docs/intro');
-  await expect (page.getByRole('link')).toHaveAttribute('aria-label', 'Star microsoft/playwright on GitHub');
+ await expect(page.locator('a.gh-btn')).toHaveAttribute('aria-label', 'Star microsoft/playwright on GitHub');
 
-  // ❌ Bad
+// bad locator example:
 page.locator("div:nth-child(3) > span");
-// ✅ Good
+// good locator example:
 const items = await page.getByTestId('item-name').nth(3).locator('span').all();
 
     });
@@ -61,6 +61,7 @@ test('Count the dropdown menu elements, then click the second one', async ({ pag
   const secondItem = langItems.nth(1);
   await expect(secondItem).toBeVisible();
   
+   await dropdown.hover();
   await secondItem.click();
   await page.waitForURL(/.*python/);
   console.log("Second link in the dropdown menu is opened, and it's Python");
@@ -74,9 +75,6 @@ page.getByRole('link', { name: 'Disney+ Hotstar' });
 // Icon locator:
 page.getByRole('img', { name: 'Disney+ Hotstar' });
 
-test('Select items using the functions', async ({ page }) => {
-  await page.goto('your-website-url');
-
   //Test ID for Bike
 const hotstarLocator_optimal = page.getByTestId('item-2');
 
@@ -89,6 +87,5 @@ const hotstarLocator_xpath = page.locator("xpath=//a[img[@alt='Disney+ Hotstar']
 //it's better to use the button (to which this kbd belongs) name, if the same kbd element is not the only one on the page.
 const searchCommandKey = page.getByRole('button', { name: /search/i }).locator('kbd').getByText('⌘');
 
-    });
 });
 
