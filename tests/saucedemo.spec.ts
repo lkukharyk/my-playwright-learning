@@ -50,7 +50,7 @@ test('5 - Form validation empty and half-filled states', async ({ page }) => {
   await expect(page.getByRole('heading', { name: /Username is required/i }), "Expected error message is not displayed").toBeVisible();
   });
 
-test('GitHub exercise - Test locked out user', async ({ page }) => {
+test.only('GitHub exercise - Test locked out user', async ({ page }) => {
 
   await page.getByRole('textbox', { name: 'Username' }).fill('locked_out_user');
   await page.getByRole('textbox', { name: 'Password' }).fill('secret_sauce');
