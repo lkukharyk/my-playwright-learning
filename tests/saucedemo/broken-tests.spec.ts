@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 
 test("login should redirect to inventory", async ({ page }) => {
-  await page.goto("https://www.saucedemo.com");
+  await page.goto("/");
   await page.getByPlaceholder("Username").fill("standard_user");   // ← is this the real placeholder?
   await page.getByPlaceholder("Password").fill("secret_sauce");
   await page.getByRole("button", { name: "Login" }).click();
@@ -18,7 +18,7 @@ npx playwright test --headed and checked that the test passed
 */
 
 test("error message on wrong password", async ({ page }) => {
-  await page.goto("https://www.saucedemo.com");
+  await page.goto("/");
   await page.getByPlaceholder("Username").fill("standard_user");
   await page.getByPlaceholder("Password").fill("wrong_password");
   await page.getByRole("button", { name: "Login" }).click();
@@ -35,7 +35,7 @@ How I verified: Ran npx playwright test --ui to see the error message and checke
 */
 
 test("cart badge appears after adding product", async ({ page }) => {
-  await page.goto("https://www.saucedemo.com");
+  await page.goto("/");
   await page.getByPlaceholder("Username").fill("standard_user");
   await page.getByPlaceholder("Password").fill("secret_sauce");
   await page.getByRole("button", { name: "Login" }).click();
