@@ -49,7 +49,18 @@ test('5 - Form validation empty and half-filled states', async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
   await expect(page.getByRole('heading', { name: /Username is required/i }), "Expected error message is not displayed").toBeVisible();
   });
+
+test('GitHub exercise - Test locked out user', async ({ page }) => {
+
+  await page.getByRole('textbox', { name: 'Username' }).fill('locked_out_user');
+  await page.getByRole('textbox', { name: 'Password' }).fill('secret_sauce');
+  await page.getByRole('button', { name: 'Login' }).click();
+  const errorContainer = page.locator('[data-test="error"]');
+  await expect(errorContainer, "Expected error message is not displayed")
+  .toHaveText('Epic sadface: Sorry, this user has been locked out.'); 
+  });
 });
+//qwerty
 
 test.describe('SauceDemo Cart tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -137,5 +148,3 @@ test('Bonus 3 - Cart after refresh', async ({ page }) => {
 
   });
 });
-
-//just some change to the code
