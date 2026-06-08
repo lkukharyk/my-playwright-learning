@@ -8,4 +8,5 @@ node_modules/
 /playwright/.auth/
 /tests/login-practice.spec.ts
 /tests/test-data.ts
+/tests/my-first.spec.ts
 /tests/playwright.dev/
